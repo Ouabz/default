@@ -2,7 +2,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="fr">
 
 
 <head>

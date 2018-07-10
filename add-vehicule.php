@@ -158,7 +158,7 @@ require('core/autoloader.php');
                                 <form method="post" action="core/services/services.php?action=addVehicule" enctype="multipart/form-data">
                                 <label for="validationCustom01">Constructeur</label>
         <?php
-        $vh = new VehiculeManager();
+        $vh = new Constructeur();
         echo $vh->getConstructSelect()
          ?> 
                             </div>
@@ -167,6 +167,7 @@ require('core/autoloader.php');
                                  <div id="modelecontainer">
                                      <select class="form-control custom-select" id="modele" name="modele">
                                        <?php
+                                       $vh = new VehiculeManager();
                                        echo $vh->getModeleSelect();
                                         ?>
                                      </select>
@@ -178,7 +179,9 @@ require('core/autoloader.php');
                             <div class="col-md-6 mb-3">
                                 <label for="category">Garage</label>
                                 <!--<input type="text" class="form-control"  placeholder="Mobile Phones" required>-->
-                               <?php echo $vh->getGarageSelect() ?>
+                               <?php 
+                               $gm = new GarageManager();
+                               echo $gm->getGarageSelect() ?>
                                 <div class="invalid-feedback">
                                     Please provide a valid category.
                                 </div>

@@ -30,5 +30,9 @@ switch ($action) {
         $vh->addMarque($_POST);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         break;
+        case 'getConstructSelect':
+        $vh = new Constructeur();
+        $vh->getConstructSelect($_POST);
+        break;
 }
 ?>

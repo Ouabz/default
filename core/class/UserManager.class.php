@@ -29,6 +29,12 @@ public function __construct()
         $insert = $this->bdd->prepare('INSERT INTO users (usr_pics,usr_email,usr_password,usr_firstname,usr_lastname) VALUES ("'.$pics.'","'.$email.'","'.$pass.'","'.$firstname.'","'.$lastname.'")');
         $insert->execute();
     }
+    public function deleteUser(){
+
+        $delete = $this->bdd->prepare('DELETE FROM users WHERE usr_id ='.$_GET['id']);
+        $delete->execute();
+    }
+    
     public function getUserList(){
         $query = $this->bdd->prepare('SELECT * FROM users');
         $query->execute();
@@ -64,7 +70,7 @@ public function __construct()
                                             <td>'.$users['usr_firstname'].'</td>
                                             <td>User</td>
                                             <td>
-                                           <a href="core/services.php?action=SetVendu" <button type="submit" class="form-control">Administrer</button></a>
+                                           <a href="./core/services/users-services.php?action=deleteUser&id='.$users['usr_id'].'" <button type="submit" class="form-control">Delete</button></a>
                                         
                                             </td>
                                         </tr>';

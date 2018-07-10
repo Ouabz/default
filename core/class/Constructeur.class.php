@@ -36,5 +36,23 @@ public function addMarque($pPost)
         echo "Error occurred";
     }
 }
+public function getConstructSelect(){
+    $query = $this->bdd->prepare('SELECT * FROM constructeur');
+    $query->execute();
+    //
+    $results = $query->fetchAll();
+    $response = '<select class="form-control custom-select" id="constructeur" name="constructeur">';
+    //
+
+    foreach($results as $construct){
+        $response.='<option value="'.$construct['const_id'].'">'.$construct['const_name'].'</option>';
+    }
+
+    //
+    $response .= '</select>';
+    echo $response;
+   // return $response;  
+    
+}
 
 }

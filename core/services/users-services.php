@@ -25,9 +25,15 @@ switch ($action) {
         $vh->addUser($_POST, $_FILES);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         break;
-    case 'listUser';
+    case 'getUserList';
     $vh = new UserManager();
     $vh->getUserList();
     break;
+    case 'deleteUser';
+    $vh = new UserManager();
+    $vh->deleteUser();
+    header('Location' .$_SERVER['HTTP_REFERER']);
+    break;
+
 }
 ?>

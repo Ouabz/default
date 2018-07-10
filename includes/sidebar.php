@@ -47,7 +47,7 @@
                 <a href="#">
                     Users<i class="icon icon-angle-left  pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>All Users</a>
+                    <li><a href="list_users.php"><i class="icon icon-circle-o"></i>All Users</a>
                     </li>
                     <li><a href="client/add_user.php"><i class="icon icon-add"></i>Add User</a>
                     </li>
