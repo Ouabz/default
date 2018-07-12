@@ -48,11 +48,11 @@
                 <a href="#">
                     Historique<i class="icon icon-angle-left  pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="list_users.php"><i class="icon icon-circle-o"></i>Historique de connexion</a>
+                    <li><a href="connect_log.php"><i class="icon icon-circle-o"></i>Historique de connexion</a>
                     </li>
-                    <li><a href="client/add_user.php"><i class="icon icon-add"></i>Historique d'ajout de garage</a>
+                    <li><a href="client/gpost_log.php"><i class="icon icon-add"></i>Historique d'ajout de garage</a>
                     </li>
-                    <li><a href="client/add_user.php"><i class="icon icon-add"></i>Historique d'ajout de véhicule</a>
+                    <li><a href="client/vpost_log.php"><i class="icon icon-add"></i>Historique d'ajout de véhicule</a>
                     </li>
                 <!--    <li><a href="panel-page-profile.html"><i class="icon icon-user"></i>User Profile </a> -->
                     </li>

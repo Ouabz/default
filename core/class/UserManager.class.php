@@ -15,19 +15,23 @@ public function __construct()
 {
     $connexion = Connexion::GetInstance();
     $this->bdd = $connexion->bdd;
+    $this->lastname = Functions::Security($_POST['firstname']);
+    $this->firstname = Functions::Security($_POST['lastname']);
 
 }
+
     // meth
     //get set
     public function addUser($pPost){
         $pics = "assets/img/avatar.png";
         $email = htmlspecialchars(trim($pPost['email']));
         $pass = md5($pPost['password']);
-        $firstname = htmlspecialchars(trim($pPost['firstname']));
-        $lastname = htmlspecialchars(trim($pPost['lastname']));
+      //  $firstname = htmlspecialchars(trim($pPost['firstname']));
+   //     $lastname = htmlspecialchars(trim($pPost['lastname']));
 
-        $insert = $this->bdd->prepare('INSERT INTO users (usr_pics,usr_email,usr_password,usr_firstname,usr_lastname) VALUES ("'.$pics.'","'.$email.'","'.$pass.'","'.$firstname.'","'.$lastname.'")');
-        $insert->execute();
+        $insert = $this->bdd->prepare('INSERT INTO users (usr_pics,usr_email,usr_password,usr_firstname,usr_lastname) VALUES ("'.$pics.'","'.$email.'","'.$pass.'", ?, ?)');
+
+        $insert->execute(array($this->firstname, $this->lastname));
     }
     public function deleteUser(){
 

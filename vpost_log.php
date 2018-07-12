@@ -1,6 +1,11 @@
-
+<?php
+session_start();
+if($_SESSION['rank' == "member"]){
+    header('Location: denied.php');
+}
+?>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="fr">
 
 
 <head>
@@ -127,7 +132,7 @@
                 <div class="col">
                     <h4>
                         <i class="icon-package"></i>
-                        Products
+                        Historique
                     </h4>
                 </div>
             </div>

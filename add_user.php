@@ -11,9 +11,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Ajouter un véhicule</title>
+    <title>Ajouter un utilisateur</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/app.css">
     <style>
         .loader {
             position: fixed;
@@ -87,7 +87,7 @@
     </div>
 </div>
 <div id="app">
-    <?php include('../includes/sidebar.php'); ?>
+    <?php include('includes/sidebar.php'); ?>
     <!--Sidebar End-->
     <div class="has-sidebar-left">
         <div class="pos-f-t">
@@ -155,7 +155,7 @@
                 <div class="col-md-8 ">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <form method="post" action="../core/services/users-services.php?action=addUser" enctype="multipart/form-data">
+                            <form method="post" action="core/services/users-services.php?action=addUser" enctype="multipart/form-data">
                                 <label for="validationCustom01">Email : </label>
                                 <input type="text" name="email"class="form-control" id="validationCustom04" placeholder="johndoe@doe.com"
                                        required>
@@ -183,7 +183,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom04">Lastname</label>
                             <input type="text" name="lastname"class="form-control" id="validationCustom04" placeholder="Doe"
-                                   required>
+                                   >
                             <div class="invalid-feedback">
                                 Please provide a valid price.
                             </div>
@@ -405,25 +405,11 @@
 <div class="control-sidebar-bg shadow white fixed"></div>
 </div>
 <!--/#app -->
-<script src="../assets/js/app.js"></script>
+<script src="assets/js/app.js"></script>
 <!--
 --- Footer Part - Use Jquery anywhere at page.
 --- http://writing.colin-gourlay.com/safely-using-ready-before-including-jquery/
 -->
-<script>
-    $("#constructeur").on("change", function(){
-        alert('constructeur ');
-        $.ajax({
-            url: "core/services.php?action=getModeleSelect",
-            data: 'constructeur=' + $("#constructeur").val(),
-            method: 'post',
-            success : function(response){
-                $("#modele").html(response)
-                console.log(response);
-            }
-        })
-    })
-</script>
 <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
 </body>
 

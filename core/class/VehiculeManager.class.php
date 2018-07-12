@@ -33,6 +33,7 @@ Class VehiculeManager{
         $garage = $pPost['garage'];
         $date = date("Y-m-d H:i:s");
         $ip = $_SERVER['REMOTE_ADDR'];
+        $email = $_SESSION['email'];
 
 
         $selectVehicule = $this->bdd->prepare('SELECT * FROM vehicules WHERE veh_immat = "'.$plaque.'"');
