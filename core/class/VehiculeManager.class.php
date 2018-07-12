@@ -32,9 +32,17 @@ Class VehiculeManager{
         $modele = $pPost['modele'];
         $garage = $pPost['garage'];
         $date = date("Y-m-d H:i:s");
-        $query = $this->bdd->prepare('INSERT INTO vehicules (veh_date_post,veh_gar_id,veh_immat,veh_price_achat,veh_price_vente,veh_poster,veh_mod) VALUES ("'.$date.'", "'.$garage.'", "'.$plaque.'", "'.$achat_price.'", "'.$vente_price.'", "'.$poster.'", "'.$modele.'")');
-print_r($pPost);
-$query->execute();
+
+
+        $selectVehicule = $this->bdd->prepare('SELECT * FROM vehicules WHERE veh_immat = "'.$plaque.'"');
+        $selectVehicule->execute();
+        $VehiculeRowCount = $selectVehicule->rowCount();
+        if($VehiculeRowCount == 0) {
+$query = $this->bdd->prepare('INSERT INTO vehicules (veh_date_post,veh_gar_id,veh_immat,veh_price_achat,veh_price_vente,veh_poster,veh_mod) VALUES ("'.$date.'", "'.$garage.'", "'.$plaque.'", "'.$achat_price.'", "'.$vente_price.'", "'.$poster.'", "'.$modele.'")');
+$query->execute();       
+}else{
+   return('Error fdp');
+}
 
 
 
@@ -120,7 +128,7 @@ $query->execute();
                                             <td>'.$vehicule['veh_etat'].'</td>
                                             <td><span class="r-3 badge statut'.$vehicule['veh_statut'].'">'.$vehicule['veh_statut'].'</span></td>
                                             <td>
-                                           <a href="core/services.php?action=SetVendu" <button type="submit">Vendu?</button></a>
+                                           <a href="./core/services/services.php?action=SetVendu&id='.$vehicule['veh_id'].'" <button type="submit">Vendu?</button></a>
                                                 </form>
                                                 <a href="panel-page-profile.html"><i class="icon-pencil"></i></a>
                                                 </form>
@@ -209,8 +217,7 @@ $query->execute();
      * Cette function permet de passer un véhicule de non vendu à vendu
      */
     public function SetVendu() {
-        $update = $this->bdd->prepare('UPDATE vehicules SET veh_statut = "Vendu" WHERE veh_id = ');
-
+        $update = $this->bdd->prepare('UPDATE vehicules SET veh_statut = "Vendu" WHERE veh_id ='.$_GET['id']);
         $update->execute();
     }
     /**
@@ -257,7 +264,7 @@ $query->execute();
      * A RE-TRAVAILLAIR !!!!!
      */
         public function CountAchat() {
-            $req = $this->bdd->prepare('SELECT SUM(veh_price_achat) AS nb FROM vehicules WHERE veh_statut = 1');
+            $req = $this->bdd->prepare('SELECT SUM(veh_price_achat) AS nb FROM vehicules');
             $req->execute();
             $fetch = $req->fetch();
 
@@ -269,7 +276,6 @@ $query->execute();
     /**
      * La function CountVente permet de compté le chiffre d'affaire
      */
-
     public function CountVente()
     {
         $req = $this->bdd->prepare('SELECT SUM(veh_price_vente) AS nb2 FROM vehicules WHERE veh_statut = "Vendu"');
@@ -287,123 +293,11 @@ $query->execute();
      * Ducoup on feras 5000 - 2500
      */
 
-    public function getConstructSelect(){
-            $query = $this->bdd->prepare('SELECT * FROM constructeur');
-            $query->execute();
-            //
-            $results = $query->fetchAll();
-            $response = '<select class="form-control custom-select" id="constructeur" name="constructeur">';
-            //
 
-            foreach($results as $construct){
-                $response.='<option value="'.$construct['const_id'].'">'.$construct['const_name'].'</option>';
-            }
-
-            //
-            $response .= '</select>';
-            echo $response;
-           // return $response;  
-            
-    }
-    public function getGarageSelect(){
-        $query = $this->bdd->prepare('SELECT * FROM garages');
-        $query->execute();
-        $results = $query->fetchAll();
-        $response = '<select class="form-control custom-select" id="garage" name="garage">';
-
-        foreach($results as $garage){
-            $response.='<option value="'.$garage['gar_id'].'">'.$garage['gar_name'].'</option>';
-        }
-        $response .= '</select>';
-        echo $response;
-    }
      /**
      * Cette fonction permet a select une category
      */
-    public function getCategorySelect(){
-        $query = $this->bdd->prepare('SELECT * FROM category');
-        $query->execute();
-        //
-        $results = $query->fetchAll();
-        $response = '<select class="form-control" name="category">';
-        //
-
-        foreach($results as $category){
-            $response.='<option value="'.$category['cat_id'].'">'.$category['cat_title'].'</option>';
-        }
-
-        //
-        $response .= '</select>';
-        return $response;
-}
-    /**
-     * Cette fonction permet a select tout les départements
-     */
-    public function getCitySelect(){
-        $query = $this->bdd->prepare('SELECT * FROM departement');
-        $query->execute();
-        //
-        $results = $query->fetchAll();
-        $response = '<select class="form-control" name="departement">';
-        //
-
-        foreach($results as $city){
-            $response.='<option value="'.$city['departement_nom'].'">'.$city['departement_nom'].'</option>';
-        }
-
-        //
-        $response .= '</select>';
-        return $response;
-    }
-     /**
-     * Cette fonction permet a select les artoste
-     */
-    public function getArtistelist(){
-        $query = $this->bdd->prepare('SELECT * FROM artiste');
-        $query->execute();
-        //
-        $results = $query->fetchAll();
-        $response = '<table class="table">
-        <thead>
-          <tr>';
-        //
-
-        foreach($results as $artistelist){
-            $response.='<th scope="row">'.$artistelist['pseudo'].'</th>';
-        }
-
-        //
-        $response .= ' </tr>
-        </thead>
-        <tbody>';
-        return $response;
-}
- /**
-     * Cette fonction permet a select les 4 dernier postes
-     */
-    public function getArtworklist(){
-        $query = $this->bdd->prepare('SELECT * FROM artwork ORDER BY art_uploaded_at DESC LIMIT 4');
-        $query->execute();
-        //
-        $results = $query->fetchAll();
-
-        $response = '';
-        //
-
-        foreach($results as $artworklist){
-            $response.='<div class="card mr-sm-2" style="width: 18rem;">
-            <img class="card-img-top" src="images/'.$artworklist['art_media'].'">
-            <div class="card-body">
-            <h5 class="card-title">'.$artworklist['art_title'].'</h5>';
-            $response.='<p class="card-text description"><div class="fixheight">'.$artworklist['art_desc'].'</p></div><a href="/insta/'.$artworklist['art_id'].'" class="btn btn-primary">Visit</a> <div class="card-footer pb-2">
-      <small class="text-muted">Publié le : '.$artworklist['art_uploaded_at'].'</small></div>  </div>
-            </div>';
-        }
-
-        //
-        $response .= '';
-        return $response;
-}
+    
 public function getMyArtwork(){
         $idman = $_SESSION['id'];
     $query = $this->bdd->prepare('SELECT * FROM artwork WHERE art_artist = "'.$idman.'"');

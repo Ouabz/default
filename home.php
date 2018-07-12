@@ -145,6 +145,10 @@ $co = new Constructeur();
                     </div>
                     <div class="sc-counter s-36">
 
+<?php 
+$vh = new VehiculeManager();
+$vh->CountVehicule();
+?>
 
 
                        </div>
@@ -168,7 +172,9 @@ echo $co->CountMarque();
                     <div class="float-right">
                         <span class="icon icon-trophy7 s-48"></span>
                     </div>
-                    <div class="sc-counter s-36"></div>
+                    <div class="sc-counter s-36"><?php
+                    echo $vh->CountVehiculeSell();
+                    ?></div>
                     <h6 class="counter-title">véhicule vendues</h6>
                 </div>
             </div>
@@ -177,7 +183,9 @@ echo $co->CountMarque();
                     <div class="float-right">
                         <span class="icon icon-startup s-48"></span>
                     </div>
-                    <div class="sc-counter s-36"></div>
+                    <div class="sc-counter s-36"><?php 
+                    
+                    echo $vh->CountVente() ?></div>
                     <h6 class="counter-title">de chiffre d'affaire</h6>
                 </div>
             </div>
@@ -185,6 +193,7 @@ echo $co->CountMarque();
       <div class="container">
         <h1>
             Actualité : 
+            <?php print_r($_SESSION); ?>
         </h1>
       </div>
 <!-- /.right-sidebar -->

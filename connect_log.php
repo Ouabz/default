@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Listes des garages</title>
+    <title>Historique de connexion</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/custom.css">
@@ -134,15 +134,10 @@
             <div class="row">
                 <ul class="nav responsive-tab nav-material nav-material-white">
                     <li>
-                        <a class="nav-link active" href="list_garages.php"><i class="icon icon-list"></i>Tout les garages</a>
+                        <a class="nav-link active" href="#"><i class="icon icon-list"></i>Toutes les connexions</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="add-garage.php"><i
-                                class="icon icon-plus-circle"></i> Ajoutez un garage</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#"><i class="icon icon-trash-can"></i>Véhicule supprimer</a>
-                    </li>
+                
+                
                 </ul>
             </div>
         </div>
@@ -155,7 +150,7 @@
                         <div class="card r-0 shadow">
 
 
-<div id="messages">
+<div id="listes">
 </div>
                             </div>
                         </div>
@@ -179,16 +174,16 @@
         -->
 
         <script>
-            var interval = setInterval(loadAllGarages, 500);
-            function loadAllGarages(){
+            var interval = setInterval(loadAllHistoryConnexion, 500);
+            function loadAllHistoryConnexion(){
                 $.ajax({
-                    url:'core/services/garagemanager-services.php',
-                    data:"action=getGaragesList",
+                    url:'core/services/history-services.php',
+                    data:"action=getHistoryConnexion",
                     method: 'post',
                     success: function(response){
                  //       console.log('success !');
                        // console.log(response);
-                        $('#messages').html(response);
+                        $('#listes').html(response);
                     },
                     error: function(errormsg){
                         alert("Erreur find :=>"+errormsg);
@@ -196,20 +191,7 @@
                 });
             }
         </script>
-        <script>
-            $("#constructeur").on("change", function(){
-                alert('constructeur ');
-                $.ajax({
-                    url: "core/services.php?action=getModeleSelect",
-                    data: 'constructeur=' + $("#constructeur").val(),
-                    method: 'post',
-                    success : function(response){
-                        $("#modelecontainer").html(response)
-                        console.log(response);
-                    }
-                })
-            })
-        </script>
+
         <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
 </body>
 

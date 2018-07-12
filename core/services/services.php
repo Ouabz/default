@@ -91,11 +91,6 @@ switch ($action) {
     /**
      * getGarageSelect affiche les noms des garages et leur place en select option.
      */
-    case 'getGarageSelect':
-        $vh = new VehiculeManager();
-        $vh->getVehiculeList();
-        header('Location' . $_SERVER['HTTP_REFERER']);
-        break;
     case 'getGaragesList':
         $vh = new VehiculeManager();
         $vh->getGaragesList();
@@ -111,5 +106,12 @@ switch ($action) {
         $vh = new VehiculeManager();
         $vh->addUser($_POST);
         break;
+    /**
+     * Vehicules Services
+     */
+    $vh = new SetVendu();
+    $vh->SetVendu();
+    header('Location' . $_SERVER['HTTP_REFERER']);
+    break;
 }
 ?>

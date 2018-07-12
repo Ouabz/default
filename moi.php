@@ -2,6 +2,7 @@
 if($_SESSION['rank'] == "member"){
     header('Location: denied.php');
 }
+require('includes/registary.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ if($_SESSION['rank'] == "member"){
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Ajouter un garage</title>
+    <title>Mon profile</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/app.css">
     <style>
@@ -153,18 +154,24 @@ if($_SESSION['rank'] == "member"){
     </header>
     <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
-
+        <label>Mon prénom : </label> <span><?= $firstname ?> </span><br>
+                        <label>Mon nom : </label> <span><?= $lastname ?> </span><br>
+                        <label>Mon email : </label> <span><?= $email ?> </span><br>
+                        <label>Mon grade : </label> <span><?= $rank ?> </span>
             <div class="row">
                 <div class="col-md-8 ">
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                     
+
                             <form method="post" action="core/services/services.php?action=addGarage" enctype="multipart/form-data">
-                                <label for="validationCustom04">Nom du garage</label>
-                                <input type="text" name="garage_name"class="form-control" id="validationCustom04" placeholder="Louvres"
+                            <h1>Changez mon mot de passe :</h1>
+                                <label for="validationCustom04">Nouveau mot de passe:</label>
+                                <input type="text" name="mdp"class="form-control" id="validationCustom04" placeholder="Louvres"
                                        required>
                         </div>
                         <div class="col-md-6 mb-3">
-                                <label for="validationCustom04">Place</label>
+                                <label for="validationCustom04">Confirmation</label>
                                 <input type="text" name="garage_space"class="form-control" id="validationCustom04" placeholder="520"
                                        required>
                             </div>

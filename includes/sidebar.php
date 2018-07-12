@@ -30,50 +30,37 @@
                     </li>
                 </ul>
             </li>
+           
             <li class="treeview">
                 <a href="#">
-                    <span>Products</span>
-                    <span class="badge r-3 badge-primary pink pull-right">4</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="panel-page-products.html"><i class="icon icon-circle-o"></i>All Products</a>
-                    </li>
-                    <li><a href="panel-page-products-create.html"><i class="icon icon-add"></i>Add
-                            New </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    Users<i class="icon icon-angle-left  pull-right"></i></a>
+                    Users Gestions<i class="icon icon-angle-left  pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="list_users.php"><i class="icon icon-circle-o"></i>All Users</a>
                     </li>
                     <li><a href="client/add_user.php"><i class="icon icon-add"></i>Add User</a>
                     </li>
-                    <li><a href="panel-page-profile.html"><i class="icon icon-user"></i>User Profile </a>
+                <!--    <li><a href="panel-page-profile.html"><i class="icon icon-user"></i>User Profile </a> -->
                     </li>
                 </ul>
             </li>
-            <li class="treeview no-b">
+            <li class="treeview">
                 <a href="#">
-                    <span>Inbox</span>
-                    <span class="badge r-3 badge-success indigo pull-right">20</span>
-                </a>
+                    Historique<i class="icon icon-angle-left  pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="panel-page-inbox.html"><i class="icon icon-circle-o"></i>All Messages</a>
+                    <li><a href="list_users.php"><i class="icon icon-circle-o"></i>Historique de connexion</a>
                     </li>
-                    <li><a href="panel7-inbox.html"><i class="icon icon-circle-o"></i>Panel7 - Inbox</a>
+                    <li><a href="client/add_user.php"><i class="icon icon-add"></i>Historique d'ajout de garage</a>
                     </li>
-                    <li><a href="panel8-inbox.html"><i class="icon icon-circle-o"></i>Panel8 - Inbox</a>
+                    <li><a href="client/add_user.php"><i class="icon icon-add"></i>Historique d'ajout de véhicule</a>
                     </li>
-                    <li><a href="panel-page-inbox-create.html"><i class="icon icon-add"></i>Compose</a>
+                <!--    <li><a href="panel-page-profile.html"><i class="icon icon-user"></i>User Profile </a> -->
                     </li>
                 </ul>
             </li>
+       
             <li class="header mt-3 font-weight-light b-t"><strong>Garage Gestion</strong></li>
             <li class="treeview ">
-            <li><a href="add-garage.php"><i class="icon icon-circle-o"></i>Ajoutez un garage</a>
+            <li><a href="add-garage.php"><i class="icon icon-add_circle"></i>Ajoutez un garage</a>
             <li><a href="list_garages.php"><i class="icon icon-circle-o"></i>Modifier un garage</a>
             <li><a href="add-vehicule.php"><i class="icon icon-circle-o"></i>Ajouter un véhicule</a>
             <li><a href="list_vehicules.php"><i class="icon icon-circle-o"></i>Modifier un véhicule</a>

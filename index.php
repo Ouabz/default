@@ -154,7 +154,7 @@ $ip_saved = $_SERVER['REMOTE_ADDR'];
  }
  elseif($data['usr_email']==$email and $data['usr_password']==$passMd5)
  {
-    $update = $con->prepare('INSERT INTO history_connexion (con_date,con_ip,con_date,con_email) VALUES ("'.$date.'", "'.$ip_saved.'", "'.$date.'", "'.$con_email.'")');
+    $update = $con->prepare('INSERT INTO history_connexion (con_date,con_ip,con_email) VALUES ("'.$date.'", "'.$ip_saved.'", "'.$email.'")');
   $update->execute();
   header('Location: home.php');
 $_SESSION['firstname']=$data['usr_firstname'];
@@ -163,6 +163,7 @@ $_SESSION['email']=$data['usr_email'];
 $_SESSION['pseudo']=$data['pseudo'];
 $_SESSION['id']=$data['usr_id'];
 $_SESSION['statut']=$data['usr_statut'];
+$_SESSION['rank']=$data['rank'];
 
  }
  }
