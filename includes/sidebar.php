@@ -15,6 +15,7 @@
             </figure>
         </div>
         <ul class="sidebar-menu">
+        <li><a href="home.php"><i class="icon icon-home"></i>Home</a>
             <li class="treeview">
                 <a href="#">
                     <span>Votre compte</span> <i
