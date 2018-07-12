@@ -22,5 +22,8 @@ switch ($action) {
         $ht->getHistoryConnexion();
       //  header('Location: ' . $_SERVER['HTTP_REFERER']);
         break;
+        case 'getHistoryVehiculesAdd':
+        $ht = new History();
+        $ht->getHistoryVehiculesAdd();
     }
 ?>

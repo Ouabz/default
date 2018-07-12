@@ -32,6 +32,7 @@ Class VehiculeManager{
         $modele = $pPost['modele'];
         $garage = $pPost['garage'];
         $date = date("Y-m-d H:i:s");
+        $ip = $_SERVER['REMOTE_ADDR'];
 
 
         $selectVehicule = $this->bdd->prepare('SELECT * FROM vehicules WHERE veh_immat = "'.$plaque.'"');
@@ -39,6 +40,8 @@ Class VehiculeManager{
         $VehiculeRowCount = $selectVehicule->rowCount();
         if($VehiculeRowCount == 0) {
 $query = $this->bdd->prepare('INSERT INTO vehicules (veh_date_post,veh_gar_id,veh_immat,veh_price_achat,veh_price_vente,veh_poster,veh_mod) VALUES ("'.$date.'", "'.$garage.'", "'.$plaque.'", "'.$achat_price.'", "'.$vente_price.'", "'.$poster.'", "'.$modele.'")');
+$recupData = $this->bdd->prepare('INSERT INTO history_vehicules_post (vpost_veh_immat,vpost_date,vpost_ip,vpost_email) VALUES ("'.$plaque.'", "'.$date.'", "'.$ip.'", "'.$email.'")');
+$recupData->execute();
 $query->execute();       
 }else{
    return('Error fdp');
