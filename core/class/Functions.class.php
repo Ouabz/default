@@ -16,4 +16,9 @@ class Functions {
         return $security;
 
     }
+    function isDeconnected(){
+        if(!isset($_SESSION['email'])){
+            header('Location: index.php');
+        }
+    }
 }
