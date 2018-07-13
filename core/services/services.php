@@ -98,6 +98,7 @@ switch ($action) {
     case 'SetVendu':
         $vh = new VehiculeManager();
         $vh->SetVendu();
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         break;
         /**
          *  FUNCTION POUR LA GESTION DES UTILISATEURS !!
@@ -109,9 +110,12 @@ switch ($action) {
     /**
      * Vehicules Services
      */
-    $vh = new SetVendu();
+    $vh = new VehiculeManager();
     $vh->SetVendu();
     header('Location' . $_SERVER['HTTP_REFERER']);
     break;
+    $vh = new VehiculeManager();
+    $vh->VehiculePerID();
+    
 }
 ?>

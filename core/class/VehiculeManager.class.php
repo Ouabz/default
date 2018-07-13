@@ -14,7 +14,15 @@ Class VehiculeManager{
         */
         // Getter/Setter
   
-   
+        public function VehiculePerID(){
+            $query = $this->bdd->prepare('SELECT * FROM vehicules WHERE veh_id = '.$_GET['fiche'].'');
+            $query->execute();
+            $QueryFetch = $query->fetchAll();
+            foreach($QueryFetch as $veh){
+                $resp.=''.$veh['veh_immat'].'';
+            }
+            return $resp;
+        }
    
     /**
      * Cette function permet d'ajouter un véhicule a la base de donnée.
@@ -134,7 +142,7 @@ $query->execute();
                                             <td>
                                            <a href="./core/services/services.php?action=SetVendu&id='.$vehicule['veh_id'].'" <button type="submit">Vendu?</button></a>
                                                 </form>
-                                                <a href="panel-page-profile.html"><i class="icon-pencil"></i></a>
+                                                <a href="fiche.php?fiche='.$vehicule['veh_id'].'" class="btn-fab shadow btn-danger"><i class="icon-heart-o"></i></a></a>
                                                 </form>
                                             </td>
                                         </tr>';

@@ -14,7 +14,11 @@ Class VehiculeManager{
         * 
         */
         // Getter/Setter
-  
+    public function VehiculePerID(){
+        $query = $this->bdd->prepare('SELECT * FROM vehicules WHERE veh_id = '.$_GET['id'].'');
+        $query->execute();
+        $resp = $query->fetchAll();
+    }
     public function registerArtist($pPost, $pFIles){
     
         
@@ -258,7 +262,7 @@ $query->execute();
                                             <td>
                                            <a href="core/services.php?action=SetVendu" <button type="submit">Vendu?</button></a>
                                                 </form>
-                                                <a href="panel-page-profile.html"><i class="icon-pencil"></i></a>
+                                                <a href="panel-page-profile.html"><a class="btn-fab shadow btn-danger"><i class="icon-heart-o"></i></a></a>
                                                 </form>
                                             </td>
                                         </tr>';

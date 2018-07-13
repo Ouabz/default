@@ -5,11 +5,12 @@ private $bdd;
 public function __construct(){
     $connexion = Connexion::GetInstance();
     $this->bdd = $connexion->bdd;
-    $this->garname = Functions::Security($_POST['garage_name']);
-    $this->gargerant = Functions::Security($_POST['gargerant']);
+   // $this->garname = Functions::Security($_POST['garage_name']);
+  //  $this->gargerant = Functions::Security($_POST['gargerant']);
 }
 public function AdminUpdateSet(){
 //    $update = $this->bdd->prepare('UPDATE adminsettings SET ')
+
 }
 public function Adminsetshow(){
     error_reporting(0);

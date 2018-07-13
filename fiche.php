@@ -2,7 +2,7 @@
 if($_SESSION['rank'] == "member"){
     header('Location: denied.php');
 }
-if($_GET['page'] != "admsettings"){
+if($_GET['key'] != "demo"){
     header('Location: badreq.php');
 }
 require('core/class/global.php');
@@ -20,7 +20,7 @@ require('core/autoloader.php'); ?>
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Administration du Garage</title>
+    <title>Fiche du véhicule</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/app.css">
     <style>
@@ -137,7 +137,7 @@ require('core/autoloader.php'); ?>
                 <div class="col">
                     <h4>
                         <i class="icon-package"></i>
-                        Administration du site
+                        Fiche du véhicule
                     </h4>
                 </div>
             </div>
@@ -151,8 +151,8 @@ require('core/autoloader.php'); ?>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                               <?php
-                              $ad = new Admin();
-                              echo $ad->Adminsetshow();
+                              $vh = new VehiculeManager();
+                              echo $vh->VehiculePerID();
                               ?>
                             </div>
 
