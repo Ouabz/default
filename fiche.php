@@ -150,10 +150,14 @@ require('core/autoloader.php'); ?>
                 <div class="col-md-8 ">
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                        <div id="printhere">
                               <?php
                               $vh = new VehiculeManager();
                               echo $vh->VehiculePerID();
                               ?>
+                              </div>
+                                 <div id="editor"></div>
+         <button id="cmd">generate PDF</button>
                             </div>
 
                         </div>
@@ -369,6 +373,24 @@ require('core/autoloader.php'); ?>
 --- Footer Part - Use Jquery anywhere at page.
 --- http://writing.colin-gourlay.com/safely-using-ready-before-including-jquery/
 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+<script>
+ 
+ var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+ 
+$('#cmd').click(function () {
+    doc.fromHTML($('#printhere').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+});
+</script>
 
 <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
 </body>
